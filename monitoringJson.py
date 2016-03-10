@@ -20,8 +20,12 @@ monitProcess = subprocess.Popen(['monit', 'status'], stdout=subprocess.PIPE, std
 output, error = monitProcess.communicate()
 
 
-test = re.findall(r'Process\s.*', output)
-print(test)
+processLineRegex = re.findall(r'Process\s.*', output)
+processExtractArray = [];
+for process in processLineRegex:
+    processExtractArray.append = (re.sub('Process \'', '', process)).group()
+
+print processExtractArray    
 
 
 
