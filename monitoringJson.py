@@ -11,6 +11,7 @@ import re
 import json
 
 # Initialising the json.
+monitoringJson = {}
 systemMonitoringJson = {}
 
 # Calling the monit status command using the Popen sub-module of subprocess.
@@ -66,8 +67,8 @@ for cpt in cpuPercentTotalLineRegex:
 print cpuPercentTotalExtractArray
 
 
-
-
+for service in range(0, processExtractArray)
+    print service
 
 # The output looks like this. Now need to extract the needed value using regular expression.
 
