@@ -49,6 +49,19 @@ for mt in memoryTotalLineRegex:
 
 print memoryTotalExtractArray
 
+memoryPercentTotalLineRegex = re.findall(r'memory\spercent\stotal.*', output)
+memoryPercentTotalExtractArray = []
+for mpt in memoryPercentTotalLineRegex:
+    memoryPercentTotalExtractArray.append(re.sub(r'\D', '', mpt))
+
+print memoryPercentTotalExtractArray
+
+
+
+
+
+
+
 # The output looks like this. Now need to extract the needed value using regular expression.
 
 # System ''
