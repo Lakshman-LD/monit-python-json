@@ -76,7 +76,7 @@ for service in range(0, len(processExtractArray)):
     processJson['cpuPercent'] = cpuPercentTotalExtractArray[service]
     monitoringJson['message'][processExtractArray[service]] = processJson
 
-print monitoringJson    
+# print monitoringJson
 
 # The output looks like this. Now need to extract the needed value using regular expression.
 
@@ -168,8 +168,13 @@ swapUsagePercentage = re.sub('\]', '', removedOpenBracesSUP)
 # Storing the swapUsagePercentage in json.
 systemMonitoringJson['swapUsagePercentage'] = swapUsagePercentage
 
+monitoringJson['message']['system'] = systemMonitoringJson
+
 # Encoding as a json using the json module.
 systemMonitoringJsonEncoding = json.dumps(systemMonitoringJson)
+
+print monitoringJson
+
 
 # Printing the systemMonitoringJson.
 print systemMonitoringJsonEncoding
