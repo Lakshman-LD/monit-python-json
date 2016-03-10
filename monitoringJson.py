@@ -36,7 +36,7 @@ print statusExtractArray
 pidLineRegex = re.findall(r'pid.*', output)
 pidExtractArray = []
 for pid in pidLineRegex:
-    pidExtractArray.append(re.sub(r'pid\s*', '', pid))
+    pidExtractArray.append(re.sub(r'\n\s*pid\s*', '', pid))
 
 print pidExtractArray
 # The output looks like this. Now need to extract the needed value using regular expression.
