@@ -67,7 +67,7 @@ for cpt in cpuPercentTotalLineRegex:
 print cpuPercentTotalExtractArray
 
 
-for service in range(0, processExtractArray.length)
+for service in range(0, processExtractArray.size)
     print service
 
 # The output looks like this. Now need to extract the needed value using regular expression.
