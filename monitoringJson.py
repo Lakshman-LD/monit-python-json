@@ -23,9 +23,9 @@ output, error = monitProcess.communicate()
 processLineRegex = re.findall(r'Process\s.*', output)
 processExtractArray = [];
 for process in processLineRegex:
-    processExtractArray.append = (re.sub('Process \'', '', process)).group()
+    processExtractArray.append(re.sub('Process \'', '', process))
 
-print processExtractArray    
+print processExtractArray
 
 
 
