@@ -20,11 +20,13 @@ monitProcess = subprocess.Popen(['monit', 'status'], stdout=subprocess.PIPE, std
 output, error = monitProcess.communicate()
 
 
-# processLineRegex = re.findall(r'Process\s.*', output)
-# processExtractArray = [];
-# for process in processLineRegex:
-#     intermediate = (re.sub('Process \'', '', process))
-#     processExtractArray.append(re.sub('\'', '', intermediate))
+processLineRegex = re.findall(r'Process\s.*', output)
+processExtractArray = [];
+for process in processLineRegex:
+    intermediate = (re.sub('Process \'', '', process))
+    processExtractArray.append(re.sub('\'', '', intermediate))
+
+print processExtractArray
 
 statusLineRegex = re.findall(r'Process\s.*\n\s*status.*', output)
 statusExtractArray = [];
@@ -39,6 +41,14 @@ for pid in pidLineRegex:
     pidExtractArray.append(re.sub(r'\D', '', pid))
 
 print pidExtractArray
+
+memoryTotalLineRegex = re.findall(r'memory\stotal.*', output)
+memoryTotalExtractArray = []
+for mt in memoryTotalLineRegex:
+    memoryTotalExtractArray.append(re.sub(r'memory\stotal\s*', mt))
+
+print memoryTotalExtractArray    
+
 # The output looks like this. Now need to extract the needed value using regular expression.
 
 # System ''
