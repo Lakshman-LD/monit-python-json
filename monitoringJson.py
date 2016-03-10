@@ -19,6 +19,13 @@ monitProcess = subprocess.Popen(['monit', 'status'], stdout=subprocess.PIPE, std
 # Output contains the monit status command.
 output, error = monitProcess.communicate()
 
+
+test = re.findall(r'Process\s.*', output)
+print(test)
+
+
+
+
 # The output looks like this. Now need to extract the needed value using regular expression.
 
 # System ''
@@ -73,7 +80,7 @@ monitoringJson['cpuKernelSpace'] = cpuKernelSpace
 
 # Memory usage of the system is represented both in value and in percentage.
 # Memory usually denotes the ram.
-memoryUsageLineRegex = re.search(r'memory\s.*', output)
+memoryUsageLineRegex = re.search(r'memory\susage.*', output)
 
 memoryUsageValueRegex = re.search(r'\d*.\d\s\w*\s', memoryUsageLineRegex.group())
 memoryUsageValue =  memoryUsageValueRegex.group()
