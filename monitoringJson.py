@@ -58,8 +58,7 @@ la5 = loadAverageArray[1]
 la15 = loadAverageArray[2]
 
 # Storing the loadAverage at 1, 5 and 15 minute intervals.
-systemlakshman
-['loadAverage1'] = la1
+systemMonitoringJson['loadAverage1'] = la1
 systemMonitoringJson['loadAverage5'] = la5
 systemMonitoringJson['loadAverage15'] = la15
 
