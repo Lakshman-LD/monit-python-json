@@ -11,7 +11,7 @@ import re
 import json
 
 # Initialising the json.
-monitoringJson = {}
+systemMonitoringJson = {}
 
 # Calling the monit status command using the Popen sub-module of subprocess.
 monitProcess = subprocess.Popen(['monit', 'status'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -58,9 +58,10 @@ la5 = loadAverageArray[1]
 la15 = loadAverageArray[2]
 
 # Storing the loadAverage at 1, 5 and 15 minute intervals.
-monitoringJson['loadAverage1'] = la1
-monitoringJson['loadAverage5'] = la5
-monitoringJson['loadAverage15'] = la15
+systemlakshman
+['loadAverage1'] = la1
+systemMonitoringJson['loadAverage5'] = la5
+systemMonitoringJson['loadAverage15'] = la15
 
 # CpuUserSpace is the amount of cpu used by the user. i.e the user space(user processes).
 cpuUserSpaceRegex = re.search(r'\d*.\d\%us', output)
@@ -68,7 +69,7 @@ cpuUserSpaceExtract = cpuUserSpaceRegex.group()
 cpuUserSpace = re.sub('%us','',cpuUserSpaceExtract)
 
 # Storing the cpuUserSpace in json.
-monitoringJson['cpuUserSpace'] = cpuUserSpace
+systemMonitoringJson['cpuUserSpace'] = cpuUserSpace
 
 # CpuKernelSpace is the amount of cpu used by the system. i.e the kernel space(system processes).
 cpuKernelSpaceRegex = re.search(r'\d*.\d\%sy', output)
@@ -76,7 +77,7 @@ cpuKernelSpaceExtract = cpuKernelSpaceRegex.group()
 cpuKernelSpace = re.sub('%sy','',cpuKernelSpaceExtract)
 
 # Storing the cpuKernelSpace in json.
-monitoringJson['cpuKernelSpace'] = cpuKernelSpace
+systemMonitoringJson['cpuKernelSpace'] = cpuKernelSpace
 
 # Memory usage of the system is represented both in value and in percentage.
 # Memory usually denotes the ram.
@@ -86,7 +87,7 @@ memoryUsageValueRegex = re.search(r'\d*.\d\s\w*\s', memoryUsageLineRegex.group()
 memoryUsageValue =  memoryUsageValueRegex.group()
 
 # Storing the memoryUsageValue in json.
-monitoringJson['memoryUsageValue'] = memoryUsageValue
+systemMonitoringJson['memoryUsageValue'] = memoryUsageValue
 
 memoryUsagePercentageRegex = re.search(r'\[.*', memoryUsageLineRegex.group())
 memoryUsagePercentageExtract =  memoryUsagePercentageRegex.group()
@@ -94,7 +95,7 @@ removedOpenBracesMUP = re.sub('\[', '', memoryUsagePercentageExtract)
 memoryUsagePercentage = re.sub('\]', '', removedOpenBracesMUP)
 
 # Storing the memoryUsagePercentage in json.
-monitoringJson['memoryUsagePercentage'] = memoryUsagePercentage
+systemMonitoringJson['memoryUsagePercentage'] = memoryUsagePercentage
 
 # Swap usage is the additional memory needed in addition to the physical ram.
 # Usually when the swap space increase, it is an indication that ram is filled and
@@ -106,7 +107,7 @@ swapUsageValueRegex = re.search(r'\d*.\d\s\w*\s', swapUsageLineRegex.group())
 swapUsageValue =  swapUsageValueRegex.group()
 
 # Storing the swapUsageValue in json.
-monitoringJson['swapUsageValue'] = swapUsageValue
+systemMonitoringJson['swapUsageValue'] = swapUsageValue
 
 swapUsagePercentageRegex = re.search(r'\[.*', swapUsageLineRegex.group())
 swapUsagePercentageExtract =  swapUsagePercentageRegex.group()
@@ -114,10 +115,10 @@ removedOpenBracesSUP = re.sub('\[', '', swapUsagePercentageExtract)
 swapUsagePercentage = re.sub('\]', '', removedOpenBracesSUP)
 
 # Storing the swapUsagePercentage in json.
-monitoringJson['swapUsagePercentage'] = swapUsagePercentage
+systemMonitoringJson['swapUsagePercentage'] = swapUsagePercentage
 
 # Encoding as a json using the json module.
-monitoringJsonEncoding = json.dumps(monitoringJson)
+systemMonitoringJsonEncoding = json.dumps(systemMonitoringJson)
 
-# Printing the monitoringJSON.
-print monitoringJsonEncoding
+# Printing the systemMonitoringJson.
+print systemMonitoringJsonEncoding
