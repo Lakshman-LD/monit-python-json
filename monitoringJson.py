@@ -52,7 +52,7 @@ print memoryTotalExtractArray
 memoryPercentTotalLineRegex = re.findall(r'memory\spercent\stotal.*', output)
 memoryPercentTotalExtractArray = []
 for mpt in memoryPercentTotalLineRegex:
-    memoryPercentTotalExtractArray.append(re.sub(r'\D', '', mpt))
+    memoryPercentTotalExtractArray.append(re.search(r'\d*.\d*', mpt).group())
 
 print memoryPercentTotalExtractArray
 
