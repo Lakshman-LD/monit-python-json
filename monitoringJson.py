@@ -45,9 +45,9 @@ print pidExtractArray
 memoryTotalLineRegex = re.findall(r'memory\stotal.*', output)
 memoryTotalExtractArray = []
 for mt in memoryTotalLineRegex:
-    memoryTotalExtractArray.append(re.sub(r'memory\stotal\s*', mt))
+    memoryTotalExtractArray.append(re.sub(r'memory\stotal\s*', '', mt))
 
-print memoryTotalExtractArray    
+print memoryTotalExtractArray
 
 # The output looks like this. Now need to extract the needed value using regular expression.
 
