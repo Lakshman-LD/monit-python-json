@@ -52,12 +52,18 @@ print memoryTotalExtractArray
 memoryPercentTotalLineRegex = re.findall(r'memory\spercent\stotal.*', output)
 memoryPercentTotalExtractArray = []
 for mpt in memoryPercentTotalLineRegex:
-    print mpt
     intermediate = re.sub(r'memory\spercent\stotal\s*', '', mpt)
     memoryPercentTotalExtractArray.append(re.sub(r'%', '', intermediate))
+
 print memoryPercentTotalExtractArray
 
+cpuPercentTotalLineRegex = re.findall(r'cpu\spercent\stotal.*', output)
+cpuPercentTotalExtractArray = []
+for cpt in cpuPercentTotalLineRegex:
+    intermediate = re.sub(r'cpu\spercent\stotal\s*', '', cpt)
+    cpuPercentTotalExtractArray.append(re.sub(r'%', '', intermediate))
 
+print cpuPercentTotalExtractArray
 
 
 
