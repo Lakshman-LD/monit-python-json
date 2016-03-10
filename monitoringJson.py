@@ -66,9 +66,17 @@ for cpt in cpuPercentTotalLineRegex:
 
 print cpuPercentTotalExtractArray
 
+monitoringJson['message'] = {}
+for service in range(0, len(processExtractArray)):
+    processJson = {}
+    processJson['status'] = statusExtractArray[service]
+    processJson['pid'] = pidExtractArray[service]
+    processJson['memoryTotal'] = memoryTotalExtractArray[service]
+    processJson['memoryPercent'] = memoryPercentTotalExtractArray[service]
+    processJson['cpuPercent'] = cpuPercentTotalExtractArray[service]
+    monitoringJson['message'][processExtractArray[service]] = processJson
 
-for service in range(0, 5):
-    print service
+print monitoringJson    
 
 # The output looks like this. Now need to extract the needed value using regular expression.
 
