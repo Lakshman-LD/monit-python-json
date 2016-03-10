@@ -187,11 +187,11 @@ monitoringJson['message']['system'] = systemMonitoringJson
 count = 0
 for status in statusExtractArray:
     if status == "Running":
-        count++
+        count = count + 1
 if count == len(statusExtractArray):
     monitoringJson['status'] = 'safe'
 else:
-    monitoringJson['status'] = 'danger'    
+    monitoringJson['status'] = 'danger'
 
 
 # Encoding as a json using the json module.
