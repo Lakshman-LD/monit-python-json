@@ -183,6 +183,17 @@ systemMonitoringJson['swapUsagePercentage'] = swapUsagePercentage
 
 monitoringJson['message']['system'] = systemMonitoringJson
 
+# giving the overall status
+count = 0
+for status in statusExtractArray:
+    if status == "Running":
+        count++
+if count == len(statusExtractArray):
+    monitoringJson['status'] = 'safe'
+else:
+    monitoringJson['status'] = 'danger'    
+
+
 # Encoding as a json using the json module.
 monitoringJsonEncoding = json.dumps(monitoringJson)
 
